@@ -5,38 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>カスタムチケットバッジ</title>
   <style>
-    /* バッジ全体のスタイル定義 */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    /* 入力フォームエリア */
+    .controls {
+      margin-bottom: 20px;
+    }
+    
+    .controls label {
+      font-size: 14px;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .controls input {
+      font-size: 16px;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 200px;
+    }
+
+    /* バッジのデザイン */
     .ticket-badge {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      
-      /* サイズ設定（必要に応じて変更してください） */
       width: 160px;
       height: 120px;
-      
-      /* 背景色（画像に近いマスタードイエロー） */
       background-color: #cb9b33;
-      
-      /* 角丸 */
       border-radius: 12px;
-      
-      /* 文字スタイル */
       color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-weight: 800; /* 太字 */
-      font-size: 48px;  /* 文字の大きさ */
+      font-weight: 800;
+      font-size: 48px;
       letter-spacing: 1px;
-      
-      /* テキスト選択を防止（アプリ風の見た目にするため） */
       user-select: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- 以下の「S-4」の部分を好きな番号や文字に変更できます -->
-  <div class="ticket-badge">S-4</div>
+  <!-- 入力フォーム -->
+  <div class="controls">
+    <label for="text-input">表示する文字を変更:</label>
+    <input type="text" id="text-input" value="S-4" placeholder="例: A-12">
+  </div>
+
+  <!-- バッジ部分 -->
+  <div class="ticket-badge" id="badge-text">S-4</div>
+
+  <script>
+    const input = document.getElementById('text-input');
+    const badge = document.getElementById('badge-text');
+
+    // 入力内容に合わせてバッジの文字を更新
+    input.addEventListener('input', (e) => {
+      badge.textContent = e.target.value;
+    });
+  </script>
 
 </body>
 </html>
